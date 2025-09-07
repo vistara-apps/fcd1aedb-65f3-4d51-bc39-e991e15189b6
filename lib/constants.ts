@@ -1,3 +1,5 @@
+import type { AvailabilityStatus, ServiceCategory, Service } from './types';
+
 export const SERVICE_CATEGORIES = {
   scoping: {
     name: 'Idea Scoping',
