@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "StatusBoard",
+    "subtitle": "Built with Zara",
+    "description": "StatusBoard is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app",
+    "splashImageUrl": "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app/image.png",
+    "tagline": "StatusBoard",
+    "screenshotUrls": [
+      "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app/screenshot.png",
+      "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://fcd1aedb65f34d51bc39e991e15189b6-vgdt.vercel.app/api/webhook"
+  }
+}

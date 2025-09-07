@@ -1,0 +1,14 @@
+{
+  "name": "StatusBoard",
+  "description": "StatusBoard is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://fcd1aedb-65f3-4d51-bc39-e991e15189b6.vercel.app",
+  "properties": {
+    "app": {
+      "name": "StatusBoard",
+      "description": "StatusBoard is a Base Mini App built with Zara.",
+      "url": "https://fcd1aedb-65f3-4d51-bc39-e991e15189b6.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}
