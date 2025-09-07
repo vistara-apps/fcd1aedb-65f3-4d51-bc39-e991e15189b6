@@ -8,7 +8,8 @@
   }
   
   body {
-    @apply bg-gradient-to-br from-purple-900 via-blue-900 to-cyan-900 text-text-emphasized min-h-screen;
+    @apply bg-gradient-to-br from-purple-900 via-blue-900 to-cyan-900 min-h-screen;
+    color: hsl(0, 0%, 95%);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }

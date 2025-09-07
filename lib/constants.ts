@@ -1,3 +1,5 @@
+import { Service } from './types';
+
 export const SERVICE_CATEGORIES = {
   scoping: {
     name: 'Idea Scoping',
