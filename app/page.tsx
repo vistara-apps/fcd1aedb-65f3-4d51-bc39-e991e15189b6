@@ -8,6 +8,8 @@ import { UserProfile } from '@/components/UserProfile';
 import { ServiceMenu } from '@/components/ServiceMenu';
 import { AIAssistant } from '@/components/AIAssistant';
 import { ActionPromptButton } from '@/components/ActionPromptButton';
+import { Dashboard } from '@/components/Dashboard';
+import { AddServiceModal } from '@/components/AddServiceModal';
 import { generateTaskPrompt } from '@/lib/ai';
 import type { Service, ServiceCategory } from '@/lib/types';
 import { MessageCircle, Menu, X, Home, User, Briefcase } from 'lucide-react';
@@ -20,6 +22,8 @@ export default function StatusBoard() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [showTaskPrompt, setShowTaskPrompt] = useState(false);
   const [taskPromptMessage, setTaskPromptMessage] = useState('');
+  const [showAddServiceModal, setShowAddServiceModal] = useState(false);
+  const [userServices, setUserServices] = useState<Service[]>([]);
 
   useEffect(() => {
     setFrameReady();
@@ -44,6 +48,15 @@ export default function StatusBoard() {
       setCurrentView('ai-assistant');
     }
     setSelectedService(null);
+  };
+
+  const handleAddService = () => {
+    setShowAddServiceModal(true);
+  };
+
+  const handleServiceAdded = (newService: Service) => {
+    setUserServices(prev => [...prev, newService]);
+    setShowAddServiceModal(false);
   };
 
   const renderNavigation = () => (
@@ -98,65 +111,7 @@ export default function StatusBoard() {
   );
 
   const renderDashboard = () => (
-    <div className="space-y-6">
-      <div className="text-center py-8">
-        <h2 className="text-3xl font-bold text-text-emphasized mb-4">
-          Signal Your Availability
-        </h2>
-        <p className="text-text-muted max-w-2xl mx-auto leading-relaxed">
-          Instantly broadcast your readiness for startup tasks and showcase your services 
-          to potential clients in your social network.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="glass-card p-6">
-          <h3 className="text-lg font-semibold text-text-emphasized mb-4">Quick Actions</h3>
-          <div className="space-y-3">
-            <ActionPromptButton
-              onClick={() => setCurrentView('profile')}
-              variant="primary"
-            >
-              Update My Status
-            </ActionPromptButton>
-            
-            <ActionPromptButton
-              onClick={() => setCurrentView('services')}
-              variant="secondary"
-            >
-              Browse Services
-            </ActionPromptButton>
-            
-            <ActionPromptButton
-              onClick={() => setCurrentView('ai-assistant')}
-              variant="secondary"
-            >
-              Get AI Assistance
-            </ActionPromptButton>
-          </div>
-        </div>
-
-        <div className="glass-card p-6">
-          <h3 className="text-lg font-semibold text-text-emphasized mb-4">Recent Activity</h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 bg-white bg-opacity-5 rounded-lg">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span className="text-sm text-text-muted">Status updated to "Available for Brainstorming"</span>
-            </div>
-            
-            <div className="flex items-center gap-3 p-3 bg-white bg-opacity-5 rounded-lg">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <span className="text-sm text-text-muted">New service "Feature Addition" added</span>
-            </div>
-            
-            <div className="flex items-center gap-3 p-3 bg-white bg-opacity-5 rounded-lg">
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <span className="text-sm text-text-muted">Client engagement: "Ready to start scoping?"</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Dashboard onNavigate={setCurrentView} />
   );
 
   const renderCurrentView = () => {
@@ -165,7 +120,7 @@ export default function StatusBoard() {
         return (
           <UserProfile
             onServiceClick={handleServiceClick}
-            onAddService={() => console.log('Add service clicked')}
+            onAddService={handleAddService}
           />
         );
       
@@ -227,6 +182,14 @@ export default function StatusBoard() {
             </div>
           </div>
         )}
+
+        {/* Add Service Modal */}
+        <AddServiceModal
+          isOpen={showAddServiceModal}
+          onClose={() => setShowAddServiceModal(false)}
+          onServiceAdded={handleServiceAdded}
+          userId="user1"
+        />
       </div>
     </div>
   );
